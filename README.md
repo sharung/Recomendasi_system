@@ -8,9 +8,11 @@ perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah 
   
 ## Business Understanding
 ### Problem Statements
-- Bagaimana cara mendapatkan rekomendasi buku yang cocok ?
+- Bagaimana cara membangun model untuk memberikan rekomendasi buku yang paling cocok ?
+  
 ### Goals
 - Membuat sistem rekomendasi buku
+
 ### Solusi Approach
 Solusi algoritma machine learning untuk sistem rekomendasi yaitu:
 
@@ -150,17 +152,19 @@ MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan d
 - Root Mean Square Error (RMSE)
 RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam pemodelan regresi untuk mengukur sejauh mana selisih antara nilai prediksi dan nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kesalahan kuadrat antara nilai prediksi dan nilai sebenarnya.
 
-Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi.
-
 ### Hasil 
+Table 4. Hasil Evaluasi
+
 |Evaluasi | Mean|
 |---------|-----|
 |RMSE     |3.740682932553402|
 |MAE      |3.2001200612136103|
 
-dapat disimpulkan bahwa Data yang dihasilkan sangat kecil yang berarti prediksi buku semakin dekat.
+
+Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi. maka dapat disimpulkan bahwa Data yang dihasilkan di table hasil evaluasi sangat kecil yang berarti prediksi buku semakin dekat dengan nilai prediksi.
 
 # Kesimpulan
+
 Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan KNN sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
 
 # Daftar Refrensi
