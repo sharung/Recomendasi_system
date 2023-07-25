@@ -124,10 +124,20 @@ penilaian pada satu data terlalu sedikit dan akan menjadi salah persepsi [1].
 -  Teknik ini tidak memuat informasi / kegunaan dari barang yang
 direkomendasikan[1].
 ### Kelebihan
-
+- memiliki kinerja yang baik
+- akurasi yang baik
 
 ### Methhode NearestNeighbors dengan algoritma 
 Algoritma Brute Force kNN menghitung jarak kuadrat dari setiap vektor fitur kueri ke setiap vektor fitur referensi dalam kumpulan data pelatihan. Kemudian, untuk setiap vektor fitur kueri, ia memilih objek dari set pelatihan yang paling dekat dengan vektor fitur kueri tersebut.
+#### Kelebihan KNN 
+- Mudah diterapkan.
+- Mudah beradaptasi.
+- Memiliki sedikit hyperparameter.
+#### Kekurangan KNN. 
+- Tidak berfungsi dengan baik pada dataset berukuran besar.
+- Kurang cocok untuk dimensi tinggi.
+- Perlu penskalaan fitur.
+- Sensitif terhadap noise data, missing values dan outliers.
 
 ### Pelatihan menggunakan Brute Force
 Selama pelatihan dengan pendekatan Brute Force, algoritme menyimpan semua vektor fitur dari kumpulan data pelatihan untuk menghitung jaraknya ke vektor fitur kueri.
@@ -151,7 +161,7 @@ Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi n
 dapat disimpulkan bahwa Data yang dihasilkan sangat kecil yang berarti prediksi buku semakin dekat.
 
 # Kesimpulan
-Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan KNN sangat baik dari hasil model. keterbatasan komputasi merukapakan kendala dalam pengerjaan rekomendasi sistem ini.
+Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan KNN sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
 
 # Daftar Refrensi
 [1] rendinusap [https://elib.unikom.ac.id/download.php?id=351950](https://elib.unikom.ac.id/download.php?id=351950)
