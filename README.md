@@ -8,13 +8,14 @@ perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah 
   
 ## Business Understanding
 ### Problem Statements
-- Bagaimana cara membangun model untuk merekomendasikan buku yang cocok ?
+- Bagaimana cara mendapatkan rekomendasi buku yang cocok ?
 ### Goals
 - Membuat sistem rekomendasi buku
 ### Solusi Approach
 Solusi algoritma machine learning untuk sistem rekomendasi yaitu:
 
-- Collaborative Filtering adalah algoritma yang bergantung pada pendapat komunitas pengguna. Dia tidak memerlukan atribut untuk setiap itemnya. Algoritma ini memberikan rekomendasi berdasarkan nilai rating atau nilai lain.
+- Collaborative Filtering
+  Collaborative Filtering akan memberikan rekomendasi bergantung pada pendapat komunitas pengguna. Dia tidak memerlukan atribut untuk setiap itemnya. Algoritma ini memberikan rekomendasi berdasarkan nilai rating atau nilai lain.
 
 ## Data Understanding
 Dataset yang digunakan pada proyek machine learning ini berasal dari [Book-Crossing: User review ratings](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset) - kaggle.
@@ -42,21 +43,15 @@ Dataset yang digunakan pada proyek machine learning ini berasal dari [Book-Cross
      2   Book-Rating  1149780 non-null  int64 
 
 ### Variable pada dataset diatas adalah sebagai berikut:
-
-- description of the book: recommending similar topics, could be solved by categorization to tags / keywords
-- author details (these are mainly hypotheses for further exploration):
-  - gender: men might not be interested in women topics and novels, but could be solved by categorization to tags / keywords
-  - age: user might be more interested in books from authors with similar age due to same cultural/historical background, problematic with deceased authors
-  - location: user may be interested in authors coming from similar location, i.e. Czech user interested in Czech author, or Polish user in Polish author
-- languages, in which the book is available: we do not want to recommend books that are in the language not known to the user, because he/she would not be able to read it anyway (prefilter the language at the beginning)
-- keywords: similarity of the books, content-based approach
-- genre: recommending similar books based on genre, they have higher probability that the user will read them
-- link between the genres: can help us with expanding the recommendation to other genres, that user might not have read yet but might be interested in (i.e. reader or historical novels can be interested in war literature even though he/she did not read anything like that yet)
-- protagonist: we might relate more to the communication style of main characters with the same gender
-- writing style: diary form, poetry, ich form, changing point of views, not categorized in genre but different people might be comfortable with different storytelling
-- user behavior: this may contain data about how the users interacts with the books, what books he/she saves for later to read, or to buy, wish lists, favourite authors, clicks from the frontend
-- parent book id: ISBN may not be appropriate to be used for recommendations, because unlike films and songs
-
+  
+User-ID: id pengguna sebagai penanda pengguna yang biasanya berupa angka
+Location: lokasi tempat tinggal
+Age     : umur pengguna
+ISBN    : Nomer Buku
+Book-Title: judul buku
+Book-Auther: kata kunci
+Publisher: tempat publish
+Book-Rating: nilai rating dari pengguna
   
 
 ## Data Preparation
@@ -121,12 +116,15 @@ Table 3. hasil recomendasi
 |5    |'Tall, Dark, and Deadly' |
 
 adapun kelemahan pada _collaborative-filtering_
+### kelemahan _Collaborative-filtering_
 - Kelemahan utama pada teknik ini yaitu sistem tidak dapat memberikan rekomendasi apabila belum adanya penilaian pada object yang di
 rekomendasikan[1].
 -  Collaborative-Filtering akan menghasilkan data yang kurang akurat ketika
 penilaian pada satu data terlalu sedikit dan akan menjadi salah persepsi [1].
 -  Teknik ini tidak memuat informasi / kegunaan dari barang yang
 direkomendasikan[1].
+### Kelebihan
+
 
 ### Methhode NearestNeighbors dengan algoritma 
 Algoritma Brute Force kNN menghitung jarak kuadrat dari setiap vektor fitur kueri ke setiap vektor fitur referensi dalam kumpulan data pelatihan. Kemudian, untuk setiap vektor fitur kueri, ia memilih objek dari set pelatihan yang paling dekat dengan vektor fitur kueri tersebut.
@@ -137,14 +135,23 @@ Selama pelatihan dengan pendekatan Brute Force, algoritme menyimpan semua vektor
 # Evaluation
 - Mean Squared Error (MSE)
 MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan dalam masalah regresi. Ini mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai sebenarnya dalam data
+
+
 - Root Mean Square Error (RMSE)
 RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam pemodelan regresi untuk mengukur sejauh mana selisih antara nilai prediksi dan nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kesalahan kuadrat antara nilai prediksi dan nilai sebenarnya.
-  
+
+Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi.
+
 ### Hasil 
 |Evaluasi | Mean|
 |---------|-----|
 |RMSE     |3.740682932553402|
 |MAE      |3.2001200612136103|
+
+dapat disimpulkan bahwa Data yang dihasilkan sangat kecil yang berarti prediksi buku semakin dekat.
+
+# Kesimpulan
+Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan KNN sangat baik dari hasil model. keterbatasan komputasi merukapakan kendala dalam pengerjaan rekomendasi sistem ini.
 
 # Daftar Refrensi
 [1] rendinusap [https://elib.unikom.ac.id/download.php?id=351950](https://elib.unikom.ac.id/download.php?id=351950)
