@@ -90,7 +90,13 @@ Table 2.penambahan fiture
 setelah penambahan fiture maka dataset berubah menjadi 313546 baris dan 8 columns
 
 ### Menghapus data duplikat
-data duplikat yang dimiliki sebanyak : 1,519 
+Menghapus data duplikat dapat membantu meningkatkan performa model.
+    
+    rating_book.drop_duplicates(['User-ID', 'Book-Title'], inplace=True)
+    rating_book.shape
+    
+data duplikat yang dimiliki sebanyak : 1519 
+data yang tersisa : 313546
 
 ### membuat pivot table
 pembuatan pivot table digunakan untuk mendapatkan nilai terdekat antara title buku dan rating buku.
@@ -121,6 +127,24 @@ rekomendasikan[1].
 penilaian pada satu data terlalu sedikit dan akan menjadi salah persepsi [1].
 -  Teknik ini tidak memuat informasi / kegunaan dari barang yang
 direkomendasikan[1].
+
+### Methhode NearestNeighbors dengan algoritma 
+Algoritma Brute Force kNN menghitung jarak kuadrat dari setiap vektor fitur kueri ke setiap vektor fitur referensi dalam kumpulan data pelatihan. Kemudian, untuk setiap vektor fitur kueri, ia memilih objek dari set pelatihan yang paling dekat dengan vektor fitur kueri tersebut.
+
+### Pelatihan menggunakan Brute Force
+Selama pelatihan dengan pendekatan Brute Force, algoritme menyimpan semua vektor fitur dari kumpulan data pelatihan untuk menghitung jaraknya ke vektor fitur kueri.
+
+# Evaluation
+- Mean Squared Error (MSE)
+MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan dalam masalah regresi. Ini mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai sebenarnya dalam data
+- Root Mean Square Error (RMSE)
+RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam pemodelan regresi untuk mengukur sejauh mana selisih antara nilai prediksi dan nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kesalahan kuadrat antara nilai prediksi dan nilai sebenarnya.
+  
+### Hasil 
+|Evaluasi | Mean|
+|---------|-----|
+|RMSE     |3.740682932553402|
+|MAE      |3.2001200612136103|
 
 # Daftar Refrensi
 [1] rendinusap [https://elib.unikom.ac.id/download.php?id=351950](https://elib.unikom.ac.id/download.php?id=351950)
