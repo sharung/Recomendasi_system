@@ -4,15 +4,13 @@
 
 Perkembangan teknologi yang sangat pesat dibidang digital membuat manusia dapat dengam mudah mengakses segala sesuatu yang berada di internet salah satunya multimedia. perkembangan multimedia di dunia digital membuat manusia dapat mengakses beragam vidio, musik dan buku.
 
-perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah satunya adalah buku, buku pada era digital ini sangat mudah untuk dicari. sistem rekomendasi membantu untuk menawarkan buku yang mungkin akan cocok dengan kriterianya.
-
-dengan adanya sistem rekomendasi buku, pengguna dapat dengan mudah memilih buku baru yang mungkin mereka suka tanpa menghabiskan waktu untuk mencari buku yang cocok untuk pengguna.
+perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah satunya adalah buku, buku pada era digital ini sangat mudah untuk dicari. sistem rekomendasi membantu untuk menawarkan buku yang mungkin akan cocok dengan kriterianya. dengan adanya sistem rekomendasi buku, pengguna dapat dengan mudah memilih buku baru atau buku yang relefan dengan pengguna tanpa menghabiskan waktu.
   
 ## Business Understanding
 ### Problem Statements
-- Bagaimana cara merekomendasikan buku yang sesuai dengan ketertarikan pengguna ?
+- Bagaimana cara membangun model untuk merekomendasikan buku yang cocok ?
 ### Goals
-- Membuat sistem rekomendasi untuk buku
+- Membuat sistem rekomendasi buku
 ### Solusi Approach
 Solusi algoritma machine learning untuk sistem rekomendasi yaitu:
 
@@ -58,6 +56,8 @@ Dataset yang digunakan pada proyek machine learning ini berasal dari [Book-Cross
 - writing style: diary form, poetry, ich form, changing point of views, not categorized in genre but different people might be comfortable with different storytelling
 - user behavior: this may contain data about how the users interacts with the books, what books he/she saves for later to read, or to buy, wish lists, favourite authors, clicks from the frontend
 - parent book id: ISBN may not be appropriate to be used for recommendations, because unlike films and songs
+
+  
 
 ## Data Preparation
 ### Menggabungkan dataset untuk mendapatkan informasi lebih dalam
