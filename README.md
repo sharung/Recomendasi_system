@@ -176,6 +176,17 @@ MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan d
 - Root Mean Square Error (RMSE)
 RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam pemodelan regresi untuk mengukur sejauh mana selisih antara nilai prediksi dan nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kesalahan kuadrat antara nilai prediksi dan nilai sebenarnya.
 
+Rumus RMSE dapat dituliskan sebagai berikut:
+
+RMSE = sqrt(mean((y_pred - y_actual)^2))
+
+di mana:
+
+n adalah jumlah sampel.
+Σ adalah tanda sigma yang menunjukkan penjumlahan.
+nilai_pred adalah nilai prediksi.
+nilai_actual adalah nilai sebenarnya.
+
 ### Hasil 
 Table 4. Hasil Evaluasi
 
