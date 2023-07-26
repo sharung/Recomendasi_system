@@ -11,7 +11,7 @@ perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah 
 - Bagaimana cara membangun model untuk memberikan rekomendasi buku yang paling cocok ?
   
 ### Goals
-- memberikan rekomendasi buku yang relefan kepada pengguna
+- membuat model yang dapat memberikan rekomendasi buku yang relefan kepada pengguna
 
 ### Solusi Approach
 Solusi algoritma machine learning untuk sistem rekomendasi yaitu:
