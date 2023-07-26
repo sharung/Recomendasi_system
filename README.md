@@ -17,7 +17,7 @@ perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah 
 Solusi algoritma machine learning untuk sistem rekomendasi yaitu:
 
 - Collaborative Filtering
-  Collaborative Filtering akan memberikan rekomendasi bergantung pada pendapat komunitas pengguna. Dia tidak memerlukan atribut untuk setiap itemnya. Algoritma ini memberikan rekomendasi berdasarkan nilai rating atau nilai lain.
+Collaborative Filtering akan memberikan rekomendasi bergantung pada pendapat komunitas pengguna. Dia tidak memerlukan atribut untuk setiap itemnya. Algoritma ini memberikan rekomendasi berdasarkan nilai rating atau nilai lain.
 
 ## Data Understanding
 Dataset yang digunakan pada proyek machine learning ini berasal dari [Book-Crossing: User review ratings](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset) - kaggle.
@@ -88,21 +88,34 @@ setelah penambahan fiture maka dataset berubah menjadi 313546 baris dan 8 column
 
 ### Menghapus data duplikat
 Menghapus data duplikat dapat membantu meningkatkan performa model.
-    
-    rating_book.drop_duplicates(['User-ID', 'Book-Title'], inplace=True)
-    rating_book.shape
-    
 data duplikat yang dimiliki sebanyak : 1519 
 data yang tersisa : 313546
 
-### membuat pivot table
-pembuatan pivot table digunakan untuk mendapatkan nilai terdekat antara title buku dan rating buku.
+### membuat visualisasi rating buku
+gambar 1. Hasil rating buku
 
+![image](https://github.com/sharung/Recomendasi_system/assets/76006507/d482a8d2-cb25-4cd4-80c3-eae14c94975b)
+
+|Hasil rating| Jumlah rating|
+|------------|--------------|
+|30          | 5940         |
+|32          | 5248         |
+|31          | 4929         |
+|33          | 4917         |
+|34          | 4658         |
+|            | ...          | 
+|172         | 172          |
+|163         | 163          |
+|160         | 160          |
+|141         | 141          |
+|137         | 137          |
+
+rating buku paling besar berada pada rating 30 dengan jumlah 5940
 
 ## Modeling
 - Metode Colaborative Filtering
 
-  Metode Colaborative filtering merupakan metode yang melakukan proses penyaringan item yang berdasarkan pengguna lain, dengan cara memberikan informasi kepada pengguna berdasarkan kemiripan karakteristik. Dalam pembuatanya saya menggunakan RecommenderNet, pada tahap ini model menghitung skor kecocokan antara pengguna dan musik dengan teknik embedding.
+  Metode Colaborative filtering merupakan metode yang melakukan proses penyaringan item yang berdasarkan pengguna lain, dengan cara memberikan informasi kepada pengguna berdasarkan kemiripan karakteristik. Dalam pembuatanya saya menggunakan RecommenderNet, pada tahap ini model menghitung skor kecocokan antara pengguna dan buku dengan teknik embedding.
   
   - Data yang digunakan pada metode ini adalah data yang berupa nilai, biasanya rating.
   - Top N Recommendation yang dihasilkan sebagai berikut.
@@ -117,7 +130,6 @@ Table 3. hasil recomendasi
 |4    |'Hidden Leaves (Debeers)'|
 |5    |'Tall, Dark, and Deadly' |
 
-adapun kelemahan pada _collaborative-filtering_
 ### kelemahan _Collaborative-filtering_
 - Kelemahan utama pada teknik ini yaitu sistem tidak dapat memberikan rekomendasi apabila belum adanya penilaian pada object yang di
 rekomendasikan[1].
@@ -125,29 +137,41 @@ rekomendasikan[1].
 penilaian pada satu data terlalu sedikit dan akan menjadi salah persepsi [1].
 -  Teknik ini tidak memuat informasi / kegunaan dari barang yang
 direkomendasikan[1].
-### Kelebihan
+### Kelebihan _Collaborative-filtering_
 - memiliki kinerja yang baik
 - akurasi yang baik
 
 ### Methhode NearestNeighbors dengan algoritma 
-Algoritma Brute Force kNN menghitung jarak kuadrat dari setiap vektor fitur kueri ke setiap vektor fitur referensi dalam kumpulan data pelatihan. Kemudian, untuk setiap vektor fitur kueri, ia memilih objek dari set pelatihan yang paling dekat dengan vektor fitur kueri tersebut.
+Algoritma K-Nearest Neighbor (K-NN) merupakan algoritma klasifikasi yang memiliki telah terbukti memecahkan berbagai masalah klasifikasi. Dua pendekatan yang dapat yang digunakan dalam algoritma ini adalah K-NN dengan Euclidean dan K-NN dengan Manhattan. Penelitian ini bertujuan untuk menerapkan algoritma K-NN dengan Euclidean dan K-NN dengan Manhattan untuk mengklasifikasikan akurasi kelulusan. [2]
+
 #### Kelebihan KNN 
 - Mudah diterapkan.
 - Mudah beradaptasi.
 - Memiliki sedikit hyperparameter.
-#### Kekurangan KNN. 
+ 
+#### Kekurangan KNN 
 - Tidak berfungsi dengan baik pada dataset berukuran besar.
 - Kurang cocok untuk dimensi tinggi.
 - Perlu penskalaan fitur.
 - Sensitif terhadap noise data, missing values dan outliers.
 
 ### Pelatihan menggunakan Brute Force
-Selama pelatihan dengan pendekatan Brute Force, algoritme menyimpan semua vektor fitur dari kumpulan data pelatihan untuk menghitung jaraknya ke vektor fitur kueri.
+Algoritma Brute force adalah sebuah pendekatan secara langsung untuk memecahkan suatu masalah, biasanya didasarkan pada pernyataan masalah (problem statement) dan definisi konsep yang dilibatkan. penyelesaian sederhana, langsung dan dengan cara yang jelas (obvious way) [3]
+
+#### Kelebihan
+- dapat memecahkan hampir semua masalah
+- sederhana dan mudah untuk dimengerti
+- menghasilkan algoritma yang layak untuk beberapa masalah seperti pencarian, mengurutan dan pencocokan string
+  
+#### Kelemahan 
+- Jarang menghasilkan algoritma yang mangkus/efektif.
+- Lambat sehingga tidak dapat diterima.
+- Tidak sekreatif teknik pemecahan masalah lainnya.
+
 
 # Evaluation
 - Mean Squared Error (MSE)
 MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan dalam masalah regresi. Ini mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai sebenarnya dalam data
-
 
 - Root Mean Square Error (RMSE)
 RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam pemodelan regresi untuk mengukur sejauh mana selisih antara nilai prediksi dan nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kesalahan kuadrat antara nilai prediksi dan nilai sebenarnya.
@@ -169,3 +193,8 @@ Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan
 
 # Daftar Refrensi
 [1] rendinusap [https://elib.unikom.ac.id/download.php?id=351950](https://elib.unikom.ac.id/download.php?id=351950)
+
+[2] Nur Hidayati, Arief Hermawan [K-Nearest Neighbor (K-NN) algorithm with Euclidean and Manhattan in classification of student graduation](https://journal.uny.ac.id/index.php/jeatech/article/viewFile/42777/pdf)
+
+[3] Bayu, Sundawa Firdiansyah, Azhari Muh. [Implementasi Algoritma Brute Force Sebagai Mesin Pencari (Search Engine) Berbasis Web Pada Database](https://core.ac.uk/download/pdf/288088999.pdf)
+
