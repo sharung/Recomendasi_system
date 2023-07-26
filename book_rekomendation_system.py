@@ -24,6 +24,8 @@ Original file is located at
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
+
 from scipy.sparse import csr_matrix
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
@@ -39,25 +41,21 @@ df_rating = pd.read_csv(path+'BX-Book-Ratings.csv', sep=";", error_bad_lines=Fal
 
 """# Exploratory Data Analysis (EDA)"""
 
-df_user.info()
+df_user.head()
 
-df_books.info()
+df_books.head()
 
-df_rating.info()
+df_rating.head()
+
+merged_book_df = df_rating.merge(df_books, on='ISBN')
+merged_book_df.head(5)
 
 df_books = df_books.drop(['Year-Of-Publication', 'Image-URL-S', 'Image-URL-M', 'Image-URL-L'], axis=1)
 rating_book = df_books.merge(df_rating, on='ISBN')
 rating_book.head()
 
-"""|index| ISBN      |	Book-Title              |	Book-Author|	Publisher       |	User-ID|	Book-Rating|	Number of Book-Rating_x|	Number of Book-Rating_y|
-|-----|-----------|-------------------------|------------|-----------       |--------|-------------|-------------------------|-------------------------|
-|0    |	0399135782|	The Kitchen God's Wife	|Amy Tan     |	Putnam Pub Group|	8      |	0          |	33                     |	33                     |
-|1    |	0399135782|	The Kitchen God's Wife	|Amy Tan     |	Putnam Pub Group|	11676  |	9          |	33                     |	33                     |
-|2    |	0399135782|	The Kitchen God's Wife	|Amy Tan     |	Putnam Pub Group|	29526  |	9          |	33                     |	33                     |
-|3    |	0399135782|	The Kitchen God's Wife	|Amy Tan     |	Putnam Pub Group|	36836  |	0          |	33                     |	33                     |
-|4    |	0399135782|	The Kitchen God's Wife	|Amy Tan     |	Putnam Pub Group|	46398  |	9          |	33                     |	33                     |
+"""### Tambahkan jumlah peringkat yang ditetapkan. Hapus dari pengguna yang memberi peringkat beberapa kali
 
-### Tambahkan jumlah peringkat yang ditetapkan. Hapus dari pengguna yang memberi peringkat beberapa kali
 """
 
 number_rating = rating_book.groupby('ISBN')['Book-Rating'].count().reset_index()
@@ -67,8 +65,9 @@ rating_book
 
 """###  memfilter rating_book diatas 30"""
 
-rating_book = rating_book[rating_book['Number of Book-Rating'] >= 30]
-rating_book.shape
+rating_book = rating_book[rating_book['Number of Book-Rating'] > 30]
+
+sns.countplot(x=rating_book['Number of Book-Rating'])
 
 """### menghapus duplikat data
 
@@ -77,40 +76,65 @@ rating_book.shape
 rating_book.drop_duplicates(['User-ID', 'Book-Title'], inplace=True)
 rating_book.shape
 
-"""### membuat table pivot"""
+"""# Encoding Data"""
 
-rating_book_pivot = rating_book.pivot_table(columns='User-ID', index='Book-Title', values='Book-Rating')
-rating_book_pivot.fillna(0, inplace=True)
-rating_book_pivot
+rating_book_df = rating_book[['ISBN','Book-Rating', 'User-ID']]
 
-"""# Modeling"""
 
-book_matrix = csr_matrix(rating_book_pivot)
-model = NearestNeighbors(algorithm='brute')
-model.fit(book_matrix)
+user_ids = rating_book_df['User-ID'].unique().tolist()
+user_encoded = {x: i for i, x in enumerate(user_ids)}
+user_to_user_encoded = {i: x for i, x in enumerate(user_ids)}
 
-rating_book_pivot.iloc[60, :].values.reshape(1,-1)
+book_ids = rating_book_df['ISBN'].unique().tolist()
+book_encoded = {x: i for i, x in enumerate(book_ids)}
+book_to_book_encoded = {i: x for i, x in enumerate(book_ids)}
 
-_, recommendations = model.kneighbors(rating_book_pivot.iloc[60, :].values.reshape(1,-1))
-recommendations
+print('Encoded user-id :', dict(list(user_encoded.items())[0: 10]))
+print('Encoded book-id (isbn) :', dict(list(book_encoded.items())[0: 10]))
 
-for i in range(len(recommendations)):
-    print(recommendations[i])
-    print(rating_book_pivot.index[recommendations[i]])
+rating_book_df['user_id'] = rating_book_df['User-ID'].map(user_encoded)
+rating_book_df['isbn'] = rating_book_df['ISBN'].map(book_encoded)
+rating_book_df.head()
 
-def recomend_book(book_name):
-    book_id = np.where(rating_book_pivot.index == book_name)[0][0]
-    _, recommendations = model.kneighbors(rating_book_pivot.iloc[book_id,:].values.reshape(1,-1))
-    for i in range(len(recommendations)):
-        if i == 0:
-            print(f"For book \"{book_name}\" is recommended")
-        if not i:
-            print(rating_book_pivot.index[recommendations[i]])
+"""#### Mengubah data int ke float"""
 
-recomend_book('Fatal Terrain')
+rating_book_df['Book-Rating'] = rating_book_df['Book-Rating'].values.astype(np.float32)
+rating_min = min(rating_book_df['Book-Rating'])
+rating_max = max(rating_book_df['Book-Rating'])
 
-"""# Evaluation
+rating_book_df['rating'] = rating_book_df['Book-Rating'].apply(lambda x: (x - rating_min) / (rating_max - rating_min)).values
+rating_book_df = rating_book_df[['ISBN', 'User-ID', 'Book-Rating', 'user_id', 'isbn', 'rating']]
+rating_book_df.head()
 
+"""# Pembagian Data Uji dan Latih"""
+
+from surprise import accuracy,SVD, Dataset, Reader
+from surprise.model_selection import train_test_split
+from surprise.model_selection import cross_validate
+
+
+reader_svd = Reader(rating_scale=(0,1))
+data_svd = Dataset.load_from_df(rating_book_df[['user_id', 'isbn', 'rating']], reader_svd)
+trainset_svd, testset_svd = train_test_split(data_svd, test_size=0.2)
+
+test_user_id = 276729
+read_books = df_rating[df_rating['User-ID'] == test_user_id]
+unread_books =  df_rating[~df_rating['ISBN'].isin(read_books.ISBN.values)]['ISBN']
+
+svd = SVD()
+
+svd.fit(trainset_svd)
+
+df_svd_predict = unread_books.to_frame(name='ISBN')
+df_svd_predict = df_svd_predict.merge(df_books[['ISBN','Book-Title','Book-Author']], left_on='ISBN', right_on='ISBN', how='left')
+df_svd_predict['prediction_rate'] = unread_books.apply(lambda x: svd.predict(test_user_id, x).est)
+
+n_top = 8
+df_svd_predict.sort_values(by='prediction_rate',ascending=False).head(n_top)
+
+"""# Modeling
+
+# Evaluation
 """
 
 ! pip install surprise
@@ -118,13 +142,10 @@ from surprise import Dataset, Reader
 from surprise.model_selection import cross_validate
 from surprise import SVD
 
-rating_book.info()
-
-reader = Reader(rating_scale=(1, 5))
-data = Dataset.load_from_df (rating_book[['User-ID','Number of Book-Rating', 'Book-Rating']],reader)
+reader = Reader(rating_scale=(1, 3))
+data = Dataset.load_from_df (rating_book_df[['user_id','isbn','rating']],reader)
 model = SVD()
-results = cross_validate(model, data, measures=['RMSE', 'MAE'], cv=5)
+results = cross_validate(model, data, measures=['RMSE', 'MAE'], cv=3)
 
 print("Mean RMSE:", results['test_rmse'].mean())
 print("Mean MAE:", results['test_mae'].mean())
-
