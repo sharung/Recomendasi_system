@@ -195,11 +195,11 @@ Table 4. Hasil Evaluasi
 
 |Evaluasi | Mean|
 |---------|-----|
-|RMSE     |3.740682932553402|
-|MAE      |3.2001200612136103|
+|RMSE     |0.798940619866297|
+|MAE      |0.6949411091659635|
 
 
-Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi. maka dapat disimpulkan bahwa Data yang dihasilkan di table hasil evaluasi adalah 3.2001200612136103 yang berarti nilai RMSE kecil.
+Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi. maka dapat disimpulkan bahwa Data yang dihasilkan di table hasil evaluasi adalah 0.798940619866297 yang berarti nilai RMSE kecil.
 
 # Kesimpulan
 
