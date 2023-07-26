@@ -178,7 +178,7 @@ RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam 
 
 Rumus RMSE dapat dituliskan sebagai berikut:
 
-RMSE = sqrt(mean((y_pred - y_actual)^2))
+RMSE = sqrt(mean((nilai_pred - nilai_actual)^2))
 
 di mana:
 
