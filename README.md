@@ -11,7 +11,7 @@ perkembangan dunia digital berpengaruh terhadap perkembangan alat manusia salah 
 - Bagaimana cara membangun model untuk memberikan rekomendasi buku yang paling cocok ?
   
 ### Goals
-- Membuat sistem rekomendasi buku
+- memberikan rekomendasi buku yang relefan kepada pengguna
 
 ### Solusi Approach
 Solusi algoritma machine learning untuk sistem rekomendasi yaitu:
@@ -46,7 +46,7 @@ Dataset yang digunakan pada proyek machine learning ini berasal dari [Book-Cross
 
 ### Variable pada dataset diatas adalah sebagai berikut:
   
-User-ID: id pengguna sebagai penanda pengguna yang biasanya berupa angka
+User-ID: id pengguna
 Location: lokasi tempat tinggal
 Age     : umur pengguna
 ISBN    : Nomer Buku
@@ -117,7 +117,7 @@ rating buku paling besar berada pada rating 30 dengan jumlah 5940
 
   Metode Colaborative filtering merupakan metode yang melakukan proses penyaringan item yang berdasarkan pengguna lain, dengan cara memberikan informasi kepada pengguna berdasarkan kemiripan karakteristik. Dalam pembuatanya saya menggunakan RecommenderNet, pada tahap ini model menghitung skor kecocokan antara pengguna dan buku dengan teknik embedding.
   
-  - Data yang digunakan pada metode ini adalah data yang berupa nilai, biasanya rating.
+  - Data yang digunakan pada metode ini adalah data yang berupa nilai rating.
   - Top N Recommendation yang dihasilkan sebagai berikut.
  
 Table 3. hasil recomendasi
@@ -141,7 +141,7 @@ direkomendasikan[1].
 - memiliki kinerja yang baik
 - akurasi yang baik
 
-### Methhode NearestNeighbors dengan algoritma 
+### Method NearestNeighbors dengan algoritma 
 Algoritma K-Nearest Neighbor (K-NN) merupakan algoritma klasifikasi yang memiliki telah terbukti memecahkan berbagai masalah klasifikasi. Dua pendekatan yang dapat yang digunakan dalam algoritma ini adalah K-NN dengan Euclidean dan K-NN dengan Manhattan. Penelitian ini bertujuan untuk menerapkan algoritma K-NN dengan Euclidean dan K-NN dengan Manhattan untuk mengklasifikasikan akurasi kelulusan. [2]
 
 #### Kelebihan KNN 
@@ -185,14 +185,15 @@ Table 4. Hasil Evaluasi
 |MAE      |3.2001200612136103|
 
 
-Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi. maka dapat disimpulkan bahwa Data yang dihasilkan di table hasil evaluasi sangat kecil yang berarti prediksi buku semakin dekat dengan nilai prediksi.
+Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi. maka dapat disimpulkan bahwa Data yang dihasilkan di table hasil evaluasi adalah 3.2001200612136103 yang berarti nilai RMSE kecil.
 
 # Kesimpulan
 
 Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan KNN sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
 
 # Daftar Refrensi
-[1] rendinusap [https://elib.unikom.ac.id/download.php?id=351950](https://elib.unikom.ac.id/download.php?id=351950)
+[1] Islamiyah Mufidatul ,Subekti Puji ,Andini  Dwi Titania [Pemanfaatan Metode Item Based Collaborative Filtering Untuk 
+Rekomendasi Wisata Di Kabupaten Malang](https://jurnal.stmikasia.ac.id/index.php/jitika/article/download/70/249/)
 
 [2] Nur Hidayati, Arief Hermawan [K-Nearest Neighbor (K-NN) algorithm with Euclidean and Manhattan in classification of student graduation](https://journal.uny.ac.id/index.php/jeatech/article/viewFile/42777/pdf)
 
