@@ -168,6 +168,20 @@ Algoritma Brute force adalah sebuah pendekatan secara langsung untuk memecahkan 
 - Lambat sehingga tidak dapat diterima.
 - Tidak sekreatif teknik pemecahan masalah lainnya.
 
+### Collaborative Filtering - teknik SVD
+SVD (Singular Value Decomposition) merupakan teknik aljabar linear yang digunakan untuk mengurangi dimensi dan  menemukan relasi antar anggota di dalam matrix
+
+Table 4. Hasil SVD
+|Index| |ISBN|	Book-Title|	Book-Author|	prediction_rate |
+|----|--|----|------------|------------|------------------|
+|0|	|034545104X|	Flesh Tones: A Novel	|M. J. Rose	|0.30515|
+|766517|	|0671665871|	GOING HOME	|Danielle Steel	|0.30515|
+|766523|	|0671690582|	WHISPER OF DEATH : WHISPER OF DEATH	|Christopher Pike|	0.30515|
+|766522|	|0671690094|	ANNE FRANK: DIARY OF A YOUNG GIRL	|Anne Frank|	0.30515|
+|766521|	|067167630X|	BOOMER	|Charles Taylor	|0.30515|
+|766520|	|067167465X|	BEST OF ENEMIES (NANCY DREW HARDY BOY SUPERMYS...	|Carolyn Keene|	0.30515|
+|766519|	|0671673513|	The SILENCE OF THE LAMBS	|Thomas Harris|	0.30515|
+|766518|	|0671670662|	WEB OF DREAMS (Casteel Saga (Paperback))	|V.C. Andrews	|0.30515|
 
 # Evaluation
 - Mean Squared Error (MSE)
@@ -203,7 +217,7 @@ Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi n
 
 # Kesimpulan
 
-Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan KNN sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
+Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan SVD sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
 
 # Daftar Refrensi
 [1] Islamiyah Mufidatul ,Subekti Puji ,Andini  Dwi Titania [Pemanfaatan Metode Item Based Collaborative Filtering Untuk 
