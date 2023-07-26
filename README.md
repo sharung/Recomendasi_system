@@ -183,8 +183,11 @@ RMSE = sqrt(mean((y_pred - y_actual)^2))
 di mana:
 
 n adalah jumlah sampel.
+
 Σ adalah tanda sigma yang menunjukkan penjumlahan.
+
 nilai_pred adalah nilai prediksi.
+
 nilai_actual adalah nilai sebenarnya.
 
 ### Hasil 
