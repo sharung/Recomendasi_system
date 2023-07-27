@@ -152,7 +152,22 @@ Table 4. Hasil SVD
 
 # Evaluation
 - Mean Squared Error (MSE)
-MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan dalam masalah regresi. Ini mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai sebenarnya dalam data
+MSE (Mean Squared Error) adalah salah satu metrik evaluasi yang umum digunakan dalam masalah regresi. Ini mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai sebenarnya dalam data.
+
+MSE menghitung berapa rata-rata kesalahan kuadrat dalam prediksi. Semakin kecil nilai MSE, semakin baik kualitas model tersebut.
+
+Rumus MSE:
+
+MSE = (1/n) * Σ|i=1|^n (y_i - ŷ_i)^2
+
+Di mana:
+   
+    n adalah jumlah sampel dalam data
+    
+    y_i adalah nilai aktual
+    
+    ŷ_i adalah nilai prediksi
+
 
 - Root Mean Square Error (RMSE)
 RMSE (Root Mean Squared Error) adalah metrik evaluasi yang umum digunakan dalam pemodelan regresi untuk mengukur sejauh mana selisih antara nilai prediksi dan nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kesalahan kuadrat antara nilai prediksi dan nilai sebenarnya.
