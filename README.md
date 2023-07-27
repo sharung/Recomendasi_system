@@ -112,6 +112,10 @@ gambar 3. Hasil rating buku
 
 rating buku paling besar berada pada rating 30 dengan jumlah 5940
 
+
+### Pembagian data uji dan latih
+peda tahap ini dataset dibagi menjadi 2 yaitu data trainig(train) dan data validasi (test), pembagian ini bertujuan untuk mempersiapkan data rating yang akan digunakan dalam pelatihan dan pengujian model _collaborative filtering_. pembagian dataset dibagi dengan komposisi 80:20, 80% untuk data train dan 20% untuk data test
+
 ## Modeling
 - Metode Colaborative Filtering
 
