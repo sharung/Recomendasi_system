@@ -212,12 +212,9 @@ Table 4. Hasil Evaluasi
 |RMSE     |0.798940619866297|
 |MAE      |0.6949411091659635|
 
-
-Nilai RMSE yang rendah dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai, Semakin kecil nilai RSME semakin dekat nilai yang di prediksi. maka dapat disimpulkan bahwa Data yang dihasilkan di table hasil evaluasi adalah 0.798940619866297 yang berarti nilai RMSE kecil.
-
 # Kesimpulan
 
-Setelah melakukan beberapa kali pembersihan data, prediksi dapat berjalan dengan baik dikarenakan pemodelan menggunakan SVD sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
+Sistem rekomendasi buku sudah berhasil dibuat dengan metode collaborative filtering dengan teknik SDV, pemilihan ini dipilih karena sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
 
 # Daftar Refrensi
 [1] Islamiyah Mufidatul ,Subekti Puji ,Andini  Dwi Titania [Pemanfaatan Metode Item Based Collaborative Filtering Untuk 
