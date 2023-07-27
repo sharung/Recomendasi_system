@@ -92,7 +92,7 @@ data duplikat yang dimiliki sebanyak : 1519
 data yang tersisa : 313546
 
 ### membuat visualisasi rating buku
-gambar 1. Hasil rating buku
+gambar 3. Hasil rating buku
 
 ![image](https://github.com/sharung/Recomendasi_system/assets/76006507/d482a8d2-cb25-4cd4-80c3-eae14c94975b)
 
@@ -119,16 +119,6 @@ rating buku paling besar berada pada rating 30 dengan jumlah 5940
   
   - Data yang digunakan pada metode ini adalah data yang berupa nilai rating.
   - Top N Recommendation yang dihasilkan sebagai berikut.
- 
-Table 3. hasil recomendasi
-
-|index|Judul                    |
-|-----|-----                    |
-|1    |'Fatal Terrain'          |
-|2    |'Golden Cup'             |
-|3    |'GEMINI CONTENDERS'      |
-|4    |'Hidden Leaves (Debeers)'|
-|5    |'Tall, Dark, and Deadly' |
 
 ### kelemahan _Collaborative-filtering_
 - Kelemahan utama pada teknik ini yaitu sistem tidak dapat memberikan rekomendasi apabila belum adanya penilaian pada object yang di
@@ -140,33 +130,6 @@ direkomendasikan[1].
 ### Kelebihan _Collaborative-filtering_
 - memiliki kinerja yang baik
 - akurasi yang baik
-
-### Method NearestNeighbors dengan algoritma 
-Algoritma K-Nearest Neighbor (K-NN) merupakan algoritma klasifikasi yang memiliki telah terbukti memecahkan berbagai masalah klasifikasi. Dua pendekatan yang dapat yang digunakan dalam algoritma ini adalah K-NN dengan Euclidean dan K-NN dengan Manhattan. Penelitian ini bertujuan untuk menerapkan algoritma K-NN dengan Euclidean dan K-NN dengan Manhattan untuk mengklasifikasikan akurasi kelulusan. [2]
-
-#### Kelebihan KNN 
-- Mudah diterapkan.
-- Mudah beradaptasi.
-- Memiliki sedikit hyperparameter.
- 
-#### Kekurangan KNN 
-- Tidak berfungsi dengan baik pada dataset berukuran besar.
-- Kurang cocok untuk dimensi tinggi.
-- Perlu penskalaan fitur.
-- Sensitif terhadap noise data, missing values dan outliers.
-
-### Pelatihan menggunakan Brute Force
-Algoritma Brute force adalah sebuah pendekatan secara langsung untuk memecahkan suatu masalah, biasanya didasarkan pada pernyataan masalah (problem statement) dan definisi konsep yang dilibatkan. penyelesaian sederhana, langsung dan dengan cara yang jelas (obvious way) [3]
-
-#### Kelebihan
-- dapat memecahkan hampir semua masalah
-- sederhana dan mudah untuk dimengerti
-- menghasilkan algoritma yang layak untuk beberapa masalah seperti pencarian, mengurutan dan pencocokan string
-  
-#### Kelemahan 
-- Jarang menghasilkan algoritma yang mangkus/efektif.
-- Lambat sehingga tidak dapat diterima.
-- Tidak sekreatif teknik pemecahan masalah lainnya.
 
 ### Collaborative Filtering - teknik SVD
 SVD (Singular Value Decomposition) merupakan teknik aljabar linear yang digunakan untuk mengurangi dimensi dan  menemukan relasi antar anggota di dalam matrix
@@ -195,17 +158,19 @@ Rumus RMSE dapat dituliskan sebagai berikut:
 RMSE = sqrt(mean((nilai_pred - nilai_actual)^2))
 
 di mana:
+    
+    n adalah jumlah sampel.
+    
+    Σ adalah tanda sigma yang menunjukkan penjumlahan.
+    
+    nilai_pred adalah nilai prediksi.
+    
+    nilai_actual adalah nilai sebenarnya.
 
-n adalah jumlah sampel.
-
-Σ adalah tanda sigma yang menunjukkan penjumlahan.
-
-nilai_pred adalah nilai prediksi.
-
-nilai_actual adalah nilai sebenarnya.
+Dengan penggunaan metrik tersebut, dapat dievaluasi seberapa baik model dalam memprediksi preferensi pengguna terhadap item secara akurat. Semakin rendah MAE dan RMSE maka itu menunjukkan model semakin akurat.
 
 ### Hasil 
-Table 4. Hasil Evaluasi
+Table 5. Hasil Evaluasi
 
 |Evaluasi | Mean|
 |---------|-----|
