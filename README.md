@@ -196,6 +196,8 @@ Table 5. Hasil Evaluasi
 |RMSE     |0.798940619866297|
 |MAE      |0.6949411091659635|
 
+perhitungan pada table diatas dilakukan dengan menghitung data 'user_id','isbn' dan 'rating' untuk mendapatkan hasil nilai prediksi.
+
 # Kesimpulan
 
 Sistem rekomendasi buku sudah berhasil dibuat dengan metode collaborative filtering dengan teknik SDV, pemilihan ini dipilih karena sangat baik dari hasil model dan evaluasi yang menggunakan metode Mean Square error(MSE) dan Root Mean Square Error(RMSE), hasil evaluasi yang kecil dari RMSE mengartikan bahwa hasil rekomendasi sangat mendekati prediksi yang di berikan oleh model.
